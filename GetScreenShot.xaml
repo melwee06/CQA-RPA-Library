@@ -1,0 +1,111 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetScreenShot" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ScreenshotDescription" Type="InArgument(x:String)" />
+    <x:Property Name="TestName" Type="InArgument(x:String)" />
+    <x:Property Name="SSElement" Type="InArgument(x:String)" />
+    <x:Property Name="LocalPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:GetScreenShot.ScreenshotDescription>
+    <InArgument x:TypeArguments="x:String" />
+  </this:GetScreenShot.ScreenshotDescription>
+  <this:GetScreenShot.TestName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:GetScreenShot.TestName>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>877.6,1273.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetScreenShot_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetScreenShot" sap:VirtualizedContainerService.HintSize="524.8,1108.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="PathExist" />
+      <Variable x:TypeArguments="ui:Image" Name="Screenshot" />
+      <Variable x:TypeArguments="x:String" Default="\\ad-cambridge-1\gs-phl$\Public\ManilaQA\CENTRAL QA\A2R RPA\Screenshots\" Name="PublicDrivePath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="483.2,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="&#xA;&quot;Checks if Folder Path Exist&quot;" />
+    <ui:PathExists DisplayName="Path Exists" Exists="[PathExist]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[LocalPath]" PathType="Folder" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="483.2,56" sap2010:WorkflowViewState.IdRef="Comment_2" Text="&quot;Creates Folder if Path don't Exist&quot;" />
+    <If Condition="[PathExist = False]" sap:VirtualizedContainerService.HintSize="483.2,260" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[LocalPath]" />
+      </If.Then>
+    </If>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="483.2,56" sap2010:WorkflowViewState.IdRef="Comment_5" Text="&quot;Captures the screenshot&quot;" />
+    <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="483.2,68.8" sap2010:WorkflowViewState.IdRef="TakeScreenshot_2" Screenshot="[Screenshot]">
+      <ui:TakeScreenshot.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe7c7e3b-0f29-4c96-a390-01b1b7240cd7" Selector="[SSElement]">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:TakeScreenshot.Target>
+    </ui:TakeScreenshot>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="483.2,56" sap2010:WorkflowViewState.IdRef="Comment_6" Text="&quot;Saves the screenshot to the Folder Path&quot;" />
+    <ui:SaveImage DisplayName="Save Image" FileName="[LocalPath &amp; &quot;\&quot; &amp; ScreenshotDescription &amp; &quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[Screenshot]" />
+  </Sequence>
+</Activity>
