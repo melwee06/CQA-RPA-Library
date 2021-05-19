@@ -3,6 +3,7 @@
   "description": "This library will be used to avoid repetitive process development.",
   "main": "NewActivity.xaml",
   "dependencies": {
+    "CQA-RPA.Library": "1.0.19",
     "UiPath.Excel.Activities": "2.10.2-preview",
     "UiPath.Mail.Activities": "1.10.2-preview",
     "UiPath.MicrosoftOffice365.Activities": "1.6.0",
@@ -14,7 +15,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.2.0.0",
-  "projectVersion": "1.0.17",
+  "projectVersion": "1.0.19",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
