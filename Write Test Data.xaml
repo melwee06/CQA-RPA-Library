@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>592,1311</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,1587</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Write_Test_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -82,9 +82,10 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Write_Test_Data" sap:VirtualizedContainerService.HintSize="602,1146" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Write_Test_Data" sap:VirtualizedContainerService.HintSize="602,1422" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[Environment.GetEnvironmentVariable(&quot;useraccount&quot;,EnvironmentVariableTarget.Machine)]" Name="UserID" />
       <Variable x:TypeArguments="x:String" Default="[Environment.GetEnvironmentVariable(&quot;userpass&quot;,EnvironmentVariableTarget.Machine)]" Name="UserPassword" />
@@ -96,13 +97,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="[AppID]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" sap:VirtualizedContainerService.HintSize="560,1054" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[UserPassword]" Services="Files, Shared" Tenant="[TenantID]" Username="[UserID + &quot;@cambridge.org&quot;]">
+    <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="[AppID]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" sap:VirtualizedContainerService.HintSize="560,1330" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[UserPassword]" Services="Files, Shared" Tenant="[TenantID]" Username="[UserID + &quot;@cambridge.org&quot;]">
       <uma:Office365ApplicationScope.Body>
         <ActivityAction x:TypeArguments="mg:GraphServiceClient">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,968" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1244" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="mg:DriveItem" Name="dataFile" />
             </Sequence.Variables>
@@ -112,6 +113,18 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <umaf:FindFilesAndFolders Results="{x:Null}" Subfolder="{x:Null}" DisplayName="Find Files And Folders" DriveName="Documents" First="[dataFile]" sap:VirtualizedContainerService.HintSize="484,84" sap2010:WorkflowViewState.IdRef="FindFilesAndFolders_1" Query="A2R RPA Account Creation.xlsx" SiteUrl="https://campress.sharepoint.com/sites/QATestingTeam" />
+            <If Condition="[Worksheet = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,236" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[Worksheet]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">AccountCreation</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+            </If>
             <If Condition="[CustomerID&lt;&gt;&quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,356" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <umae:WriteCell CellAddress="[cellArg]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[Worksheet]" Value="[CustomerID]" Workbook="[dataFile]" />
