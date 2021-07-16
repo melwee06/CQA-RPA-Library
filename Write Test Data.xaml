@@ -2,13 +2,13 @@
   <x:Members>
     <x:Property Name="CustomerID" Type="InArgument(x:String)" />
     <x:Property Name="cellArg" Type="InArgument(x:String)" />
-    <x:Property Name="Execution" Type="InArgument(x:String)" />
     <x:Property Name="Worksheet" Type="InArgument(x:String)" />
+    <x:Property Name="WriteData" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,1587</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>709,1487</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Write_Test_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -82,7 +82,6 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Write_Test_Data" sap:VirtualizedContainerService.HintSize="602,1422" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -130,9 +129,9 @@
                 <umae:WriteCell CellAddress="[cellArg]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[Worksheet]" Value="[CustomerID]" Workbook="[dataFile]" />
               </If.Then>
             </If>
-            <If Condition="[Execution&lt;&gt;&quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,356" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[WriteData&lt;&gt;&quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,356" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <umae:WriteCell CellAddress="[cellArg]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="[Worksheet]" Value="[Execution]" Workbook="[dataFile]" />
+                <umae:WriteCell CellAddress="[cellArg]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="[Worksheet]" Value="[WriteData]" Workbook="[dataFile]" />
               </If.Then>
             </If>
           </Sequence>
